@@ -1,0 +1,9 @@
+{
+  "name": "web/oef1_oop",
+  "autoload": {
+    "psr-4": {
+      "tool\\": "src/tool/",
+      "worker\\": "src/worker/"
+    }
+  }
+}
