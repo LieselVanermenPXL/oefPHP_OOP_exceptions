@@ -43,9 +43,11 @@ class TextNode
         if ($i >= 0 ) {
             $count = 0;
             $node = $this;
+            $printed = false;
 
             if ($count == $i) {
                 print($node->text);
+                $printed = true;
             }
             else {
                 while ($node->nextNode !== null) {
@@ -53,10 +55,16 @@ class TextNode
                     $node = $node->nextNode;
                     if($count === $i) {
                         print($node->text);
+                        $printed = true;
                     }
-
                 }
             }
+            if (!$printed) {
+                throw new \Exception("\$i heeft een waarde groter dan het aantal bestaande nodes.");
+            }
+        }
+        else {
+            throw new \Exception("\$i mag geen negatieve waarde zijn.");
         }
     }
 }

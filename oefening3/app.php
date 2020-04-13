@@ -12,4 +12,9 @@ $n->printAll();
 
 print("\n");
 
-$n->printTextNodeAt(10);
+try {
+    $n->printTextNodeAt(10);
+}
+catch (Exception $exception) {
+    print ($exception->getMessage());
+}
