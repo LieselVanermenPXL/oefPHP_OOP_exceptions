@@ -1,7 +1,4 @@
 <?php
-if (!ctype_digit($_GET['day']) || !ctype_digit($_GET['month']) || !ctype_digit($_GET['year'])) {
-    header("Location: invoer.html");
-}
 $day = (int)$_POST['day'];
 $month = (int)$_POST['month'];
 $year = (int)$_POST['year'];
@@ -17,7 +14,12 @@ $year = (int)$_POST['year'];
 
 <?php
 require_once '../Util/Date.php';
-$date = Date::make($day, $month, $year);
+try {
+    $date = Date::make($day, $month, $year);
+}
+catch (DateException $dateException) {
+    print($dateException->getMessage() . "<br/>");
+}
 $date->printMonth();
 
 print("</br>" . 'Changed month: ');
