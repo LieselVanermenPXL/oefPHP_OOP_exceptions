@@ -8,3 +8,7 @@ $year = $_POST['year'];
 $date = Date::make($day, $month, $year);
 $date->printMonth();
 
+print("</br>" . 'Changed month: ');
+
+$dateChange = $date->changeMonth(5);
+$dateChange->printMonth();
