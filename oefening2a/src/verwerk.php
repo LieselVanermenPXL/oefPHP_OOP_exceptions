@@ -1,5 +1,6 @@
 <?php
-require_once '../Util/Date.php';
+use Util\Date;
+require_once('Util/Date.php');
 
 $day = $_POST['day'];
 $month = $_POST['month'];
