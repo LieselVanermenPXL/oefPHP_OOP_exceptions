@@ -1,35 +1,45 @@
-<?php
+<?php namespace Util;
 
 
 class Date
 {
     private $day, $month, $year;
     private static $MONTHS =  ["jan", "feb", "mar", "apr", "mei", "jun", "jul", "aug", "sept", "okt", "nov", "dec"];
+    const DEFAULT_DAY = 1;
+    const DEFAULT_MONTH = 1;
+    const DEFAULT_YEAR = 2008;
 
-    private function __construct($day = 1, $month = 1, $year = 2008)
+    private function __construct($day = self::DEFAULT_DAY, $month = self::DEFAULT_MONTH, $year = self::DEFAULT_YEAR)
     {
+        if ($day == '') {
+            $day = self::DEFAULT_DAY;
+        }
+        if ($month == '') {
+            $month = self::DEFAULT_MONTH;
+        }
+        if ($year == '') {
+            $year = self::DEFAULT_YEAR;
+        }
+
         if ($day <= 0 || $day > 31) {
             throw new DateException("Wrong input for day");
         }
         $this->day = $day;
 
-//        if ($month <= 0 || $month > 12) {
-//            throw new DateException("Wrong input for month");
-//        }
+        if ($month <= 0 || $month > 12) {
+            throw new DateException("Wrong input for month");
+        }
         $this->month = $month;
 
+        if ($year < 0) {
+            throw new DateException("Wrong input for year");
+        }
         $this->year = $year;
     }
 
     public static function make($day, $month, $year)
     {
-        try {
-           $date = new self($day, $month, $year);
-        }
-        catch (DateException $dateException) {
-            throw $dateException;
-        }
-        return $date;
+        return new self($day, $month, $year);
     }
 
     public function getDay(): int
