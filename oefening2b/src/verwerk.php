@@ -1,8 +1,9 @@
 <?php
 use Util\Date;
 use Util\DateException;
-require_once 'Util/DateException.php';
-require_once 'Util/Date.php';
+//require_once 'Util/DateException.php';
+//require_once 'Util/Date.php';
+require_once '../vendor/autoload.php';
 
 $day = (int)$_POST['day'];
 $month = (int)$_POST['month'];
